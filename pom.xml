@@ -14,15 +14,15 @@
     <binary.prefix>e89</binary.prefix>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <android.version>4.1.1.4</android.version>
-    <android.platform>16</android.platform>
+    <android.version>5.0.1_r2</android.version>
+    <android.platform>21</android.platform>
     <android.plugin.version>3.8.2</android.plugin.version>
   </properties>
 
   <dependencies>
 
     <dependency>
-      <groupId>com.google.android</groupId>
+      <groupId>android</groupId>
       <artifactId>android</artifactId>
       <version>${android.version}</version>
       <scope>provided</scope>
@@ -30,7 +30,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.11</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -60,6 +60,14 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.1</version>
+          <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+          </configuration>
         </plugin>
 
       </plugins>

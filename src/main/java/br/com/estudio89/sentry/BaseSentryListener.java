@@ -9,10 +9,13 @@ import org.json.JSONObject;
 
 
 public class BaseSentryListener extends Sentry.SentryEventCaptureListener {
+	private Context context;
+	public BaseSentryListener(Context context) {
+		this.context = context;
+	}
 
 	@Override
 	public Sentry.SentryEventBuilder beforeCapture(Sentry.SentryEventBuilder builder) {
-		Context context = Sentry.getInstance().getContext();
 		String version = "";
 		JSONObject tags = builder.getTags();
 		try {
