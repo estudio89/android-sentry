@@ -18,6 +18,7 @@ public class BaseSentryListener extends Sentry.SentryEventCaptureListener {
 	public Sentry.SentryEventBuilder beforeCapture(Sentry.SentryEventBuilder builder) {
 		String version = "";
 		JSONObject tags = builder.getTags();
+		JSONObject extra = builder.getExtra();
 		try {
 			PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
 			version = pInfo.versionName;
@@ -25,7 +26,7 @@ public class BaseSentryListener extends Sentry.SentryEventCaptureListener {
 			tags.put("device_model", android.os.Build.MODEL);
 			tags.put("manufacturer", android.os.Build.MANUFACTURER);
 			tags.put("android_version", android.os.Build.VERSION.RELEASE);
-			
+			extra.put("breadcrumbs", SentryBreadcrumbs.getInstance().getBreadcrumbs());
 		} catch (JSONException e) {
 			e.printStackTrace();
 		} catch (NameNotFoundException e) {
