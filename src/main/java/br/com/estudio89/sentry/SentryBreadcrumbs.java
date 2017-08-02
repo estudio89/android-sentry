@@ -25,7 +25,7 @@ public class SentryBreadcrumbs {
     public void addBreadcrumb(Object caller, String message) {
         try {
             Date date = new Date();
-            message = fmt.format(date) + " | " + caller.getClass().getSimpleName() + " | " + message;
+            message = fmt.format(date) + " | " + caller.getClass().getSimpleName() + " | " + message.replaceAll("[^\\x00-\\x7F]", "");
             breadcrumbs.put(message);
 
             if (breadcrumbs.length() > 30) {
